@@ -18,6 +18,11 @@ class HomeController extends Controller
 
     public function dashboard()
     {
-        return view('welcome');
+        return view('dashboard.index');
+    }
+
+    public function ruangan()
+    {
+        return view('dashboard.ruangan.index');
     }
 }
