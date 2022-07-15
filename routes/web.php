@@ -1,8 +1,10 @@
 <?php
 
-use App\Http\Controllers\HomeController;
+use App\Http\Controllers\AngkatanController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\Auth\LoginController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,13 +23,15 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', [HomeController::class, 'index'])->name('home');
 
 Route::get('/logout',[LoginController::class,'logout']);
 
 Route::group(['middleware' => ['role:Admin|Pegawai']],function () {
     Route::prefix('/admin')->group(function () {
         Route::get('/dashboard',[HomeController::class,'dashboard'])->name('dashboard');
+        Route::get('/ruangan',[HomeController::class,'ruangan'])->name('ruangan');
+        Route::resource('/angkatan',AngkatanController::class);
     });
 });
 
