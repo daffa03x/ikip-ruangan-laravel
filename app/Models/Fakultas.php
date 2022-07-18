@@ -13,5 +13,8 @@ class Fakultas extends Model
 
     public function prodi(){
         return $this->hasMany(Prodi::class);
+  }
+    public function ruangan(){
+        return $this->hasMany(Ruangan::class);
     }
 }

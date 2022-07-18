@@ -7,6 +7,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\FakultasController;
 use App\Http\Controllers\ProdiController;
+use App\Http\Controllers\RuanganController;
 
 /*
 |--------------------------------------------------------------------------
@@ -36,6 +37,7 @@ Route::group(['middleware' => ['role:Admin|Pegawai']],function () {
         Route::resource('/angkatan',AngkatanController::class);
         Route::resource('/fakultas',FakultasController::class);
         Route::resource('/prodi',ProdiController::class);
+        Route::resource('/ruangan',RuanganController::class);
     });
 });
 

@@ -66,9 +66,10 @@ class FakultasController extends Controller
      * @param  \App\Models\Fakultas  $fakultas
      * @return \Illuminate\Http\Response
      */
-    public function edit(Fakultas $fakultas)
+    public function edit($id)
     {
-        //
+        $data = Fakultas::findOrFail($id);
+        return view('dashboard.fakultas.edit',compact('data'));
     }
 
     /**
@@ -78,9 +79,17 @@ class FakultasController extends Controller
      * @param  \App\Models\Fakultas  $fakultas
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Fakultas $fakultas)
+    public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'nama' => 'required',
+        ]);
+        $data = Fakultas::findOrFail($id);
+        $nama = $request->nama;
+        $data->update([
+            'nama' => $nama
+        ]);
+        return redirect('admin/fakultas')->with('message', 'Data Berhasil Di Update');
     }
 
     /**
@@ -89,8 +98,10 @@ class FakultasController extends Controller
      * @param  \App\Models\Fakultas  $fakultas
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Fakultas $fakultas)
+    public function destroy($id)
     {
-        //
+        $data = Fakultas::findOrFail($id);
+        $data->delete();
+        return redirect('admin/fakultas')->with('message', 'Data Berhasil Di Hapus');
     }
 }
