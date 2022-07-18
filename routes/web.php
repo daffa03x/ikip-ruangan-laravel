@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\FakultasController;
 
 /*
 |--------------------------------------------------------------------------
@@ -32,6 +33,7 @@ Route::group(['middleware' => ['role:Admin|Pegawai']],function () {
         Route::get('/dashboard',[HomeController::class,'dashboard'])->name('dashboard');
         Route::get('/ruangan',[HomeController::class,'ruangan'])->name('ruangan');
         Route::resource('/angkatan',AngkatanController::class);
+        Route::resource('/fakultas',FakultasController::class);
     });
 });
 
