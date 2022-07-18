@@ -14,11 +14,11 @@
                     <div class="col-lg-12">
                         <div class="card">
                             <div class="card-body">
-                                <h3 class="card-title">Ruangan</h3>
+                                <h3 class="card-title">Prodi</h3>
                                 <hr>
                                 <div class="row">
                                     <div class="col-lg-6">
-                                        <a href="{{ url('admin/fakultas/create') }}" class="btn btn-primary mb-3 px-3">Tambah</a>
+                                        <a href="{{ url('admin/prodi/create') }}" class="btn btn-primary mb-3 px-3">Tambah</a>
                                     </div>
                                     {{-- <div class="col-lg-6 d-flex justify-content-end">
                                         <a href="" class="btn btn-danger mb-3 px-3 mr-2">PDF</a>
@@ -30,9 +30,8 @@
                                         <thead>
                                             <tr>
                                                 <th>No</th>
-                                                <th>Fakultas</th>
-                                                <th>Ruangan</th>
-                                                <th>Lantai</th>
+                                                <th>Nama Fakultas</th>
+                                                <th>Nama Prodi</th>
                                                 <th>Action</th>
                                             </tr>
                                         </thead>
@@ -42,11 +41,10 @@
                                                 <td>{{ $loop->iteration }}</td>
                                                 <td>{{ $item->fakultas->nama }}</td>
                                                 <td>{{ $item->nama }}</td>
-                                                <td>{{ $item->lantai }}</td>
                                                 <td>
-                                                <form method="POST" class="d-inline" action="{{ url('admin/fakultas/'.$item->id) }}">
+                                                <form method="POST" class="d-inline" action="{{ url('admin/prodi/'.$item->id) }}">
                                                 @csrf
-                                                <a class="btn btn-warning ml-1 text-light" href="{{ url('admin/fakultas/'.$item->id.'/edit') }}">Edit</a>
+                                                <a class="btn btn-warning ml-1 text-light" href="{{ url('admin/prodi/'.$item->id.'/edit') }}">Edit</a>
                                                 <input name="_method" type="hidden" value="DELETE">
                                                 <button type="submit" class="btn btn-xs btn-danger show_confirm" data-toggle="tooltip" title='Delete'>Hapus</button>
                                                 </form>
