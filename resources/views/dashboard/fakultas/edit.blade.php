@@ -11,16 +11,16 @@
             <div class="card">
                 <div class="card-body">
                     <h3 class="card-title">Edit Angkatan</h3>
-                    <form class="mt-4" method="POST" action="{{ url('admin/angkatan/'.$data->id) }}">
+                    <form class="mt-4" method="POST" action="{{ url('admin/fakultas/'.$data->id) }}">
                         @method('PUT')
                         @csrf
                         <div class="form-group">
-                            <label for="">Tahun Angkatan</label>
-                            <input type="text" name="thn_angkatan" value="{{ $data->thn_angkatan }}" class="form-control">
+                            <label for="">Fakultas</label>
+                            <input type="text" name="nama" value="{{ $data->nama }}" class="form-control">
                         </div>
                         <div class="form-group">
                             <button type="submit" class="btn btn-primary mr-2">Simpan</button>
-                            <a href="{{ url('admin/angkatan') }}" class="btn btn-primary">Back</a>
+                            <a href="{{ url('admin/fakultas') }}" class="btn btn-primary">Back</a>
                         </div>
                     </form>
                 </div>
