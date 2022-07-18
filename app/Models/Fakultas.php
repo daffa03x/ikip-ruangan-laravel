@@ -10,4 +10,8 @@ class Fakultas extends Model
     use HasFactory;
     protected $table = 'fakultas';
     protected $fillable = ['nama'];
+
+    public function ruangan(){
+        return $this->hasMany(Ruangan::class);
+    }
 }
