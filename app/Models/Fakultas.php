@@ -11,6 +11,9 @@ class Fakultas extends Model
     protected $table = 'fakultas';
     protected $fillable = ['nama'];
 
+    public function prodi(){
+        return $this->hasMany(Prodi::class);
+  }
     public function ruangan(){
         return $this->hasMany(Ruangan::class);
     }
