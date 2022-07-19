@@ -19,17 +19,17 @@
                                 <select class="form-control text-center" name="fakultas">
                                     @foreach($fakultas as $f)
                                     @if(old('fakultas',$data->fakultas_id) == $f->id)
-                                    <option value="{{ $f->id }}" selected>{{ $f->name }}</option>
+                                    <option value="{{ $f->id }}" selected>{{ $f->nama }}</option>
                                     @else
-                                    <option value="{{ $f->id }}">{{ $d->name }}</option>
+                                    <option value="{{ $f->id }}">{{ $f->nama }}</option>
                                     @endif
                                     @endforeach
                                 </select>
                             </div>
                             <div class="form-group">
                                 <label for="">Prodi</label>
-                                <input type="text" class="form-control @error('jam_mulai') is-invalid @enderror" name="jam_mulai" value="{{ $data->jam_mulai }}">
-                                @error('jam_mulai')
+                                <input type="text" class="form-control @error('nama') is-invalid @enderror" name="nama" value="{{ $data->nama }}">
+                                @error('nama')
                                 <div class="invalid-feedback">
                                     {{ $validation.required }}
                                 </div>
