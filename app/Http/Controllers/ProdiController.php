@@ -27,7 +27,9 @@ class ProdiController extends Controller
      */
     public function create()
     {
-
+        return view('dashboard.prodi.create',[
+            'fakultas' => Fakultas::all()
+        ]);
     }
 
     /**
@@ -38,7 +40,20 @@ class ProdiController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'fakultas' => 'required',
+            'nama' => 'required'
+        ]);
 
+        $fakultas = $request->fakultas;
+        $nama = $request->nama;
+
+        Prodi::create([
+            'fakultas_id' => $fakultas,
+            'nama' => $nama
+        ]);
+
+        return redirect('admin/prodi')->with('message','Data Berhasil Di Tambahkan');    
     }
 
     /**
@@ -47,7 +62,7 @@ class ProdiController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Prodi $prodi)
     {
         //
     }
@@ -60,12 +75,28 @@ class ProdiController extends Controller
      */
     public function edit($id)
     {
-
+        $data = Prodi::findOrFail($id);
+        return view('dashboard.prodi.edit',compact('data'),[
+            'fakultas' => Fakultas::all()
+        ]);
     }
 
-        public function update(Request $request)
+        public function update(Request $request,$id)
         {
-            //
+            $request->validate([
+                'fakultas' => 'required',
+                'nama' => 'required'
+            ]);
+    
+            $prodi = Prodi::findOrFail($id);
+            $fakultas = $request->fakultas;
+            $nama = $request->nama;
+    
+            $prodi->update([
+                'fakultas_id' => $fakultas,
+                'nama' => $nama
+            ]);
+            return redirect('admin/prodi')->with('message', 'Data Berhasil Di Update');
         }
     
         /**
@@ -74,8 +105,10 @@ class ProdiController extends Controller
          * @param  \App\Models\Fakultas  $fakultas
          * @return \Illuminate\Http\Response
          */
-        public function destroy()
+        public function destroy($id)
         {
-            //
+            $data = Prodi::findOrFail($id);
+            $data->delete();
+            return redirect('admin/prodi')->with('message', 'Data Berhasil Di Hapus');
         }
 }
