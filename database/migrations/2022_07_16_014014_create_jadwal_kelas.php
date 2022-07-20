@@ -18,6 +18,7 @@ class CreateJadwalKelas extends Migration
             $table->unsignedBigInteger('matkul_id');
             $table->unsignedBigInteger('angkatan_id');
             $table->unsignedBigInteger('prodi_id');
+            $table->string('kelas');
             $table->string('hari');
             $table->time('jam_mulai');
             $table->time('jam_selesai');
