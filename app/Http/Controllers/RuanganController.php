@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Ruangan;
+use App\Models\Fakultas;
 use Illuminate\Http\Request;
 
 class RuanganController extends Controller
@@ -26,7 +27,9 @@ class RuanganController extends Controller
      */
     public function create()
     {
-        //
+        return view('dashboard.ruangan.create',[
+            'fakultas' => Fakultas::get()
+        ]);
     }
 
     /**
@@ -37,7 +40,22 @@ class RuanganController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'nama' => 'required',
+            'lantai' => 'required'
+        ]);
+
+        $fakultas = $request->fakultas;
+        $nama = $request->nama;
+        $lantai = $request->lantai;
+
+        Ruangan::create([
+            'fakultas_id' => $fakultas,
+            'nama' => $nama,
+            'lantai' => $lantai
+        ]);
+
+        return redirect('admin/ruangan')->with('message','Data Berhasil Di Tambahkan');
     }
 
     /**
@@ -57,9 +75,12 @@ class RuanganController extends Controller
      * @param  \App\Models\Ruangan  $ruangan
      * @return \Illuminate\Http\Response
      */
-    public function edit(Ruangan $ruangan)
+    public function edit($id)
     {
-        //
+        $data = Ruangan::findOrFail($id);
+        return view('dashboard.ruangan.edit',compact('data'),[
+            'fakultas' => Fakultas::all()
+        ]);
     }
 
     /**
@@ -69,9 +90,24 @@ class RuanganController extends Controller
      * @param  \App\Models\Ruangan  $ruangan
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Ruangan $ruangan)
+    public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'nama' => 'required',
+            'lantai' => 'required'
+        ]);
+    
+        $ruangan = Ruangan::findOrFail($id);
+        $fakultas = $request->fakultas;
+        $nama = $request->nama;
+        $lantai = $request->lantai;
+    
+        $ruangan->update([
+            'fakultas_id' => $fakultas,
+            'nama' => $nama,
+            'lantai' => $lantai
+        ]);
+        return redirect('admin/ruangan')->with('message', 'Data Berhasil Di Update');
     }
 
     /**
@@ -80,8 +116,10 @@ class RuanganController extends Controller
      * @param  \App\Models\Ruangan  $ruangan
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Ruangan $ruangan)
+    public function destroy($id)
     {
-        //
+        $ruangan = Ruangan::findOrFail($id);
+        $ruangan->delete();
+        return redirect('admin/ruangan')->with('message', 'Data Berhasil Di Hapus');
     }
 }

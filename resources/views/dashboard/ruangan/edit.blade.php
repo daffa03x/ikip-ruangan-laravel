@@ -10,8 +10,8 @@
             <div class="col-sm-12 col-md-8 col-lg-6">
                 <div class="card">
                     <div class="card-body">
-                        <h3 class="card-title">Tambah Prodi</h3>
-                        <form class="mt-4" method="POST" action="{{ url('admin/prodi/'.$data->id) }}">
+                        <h3 class="card-title">Edit Ruangan</h3>
+                        <form class="mt-4" method="POST" action="{{ url('admin/ruangan/'.$data->id) }}">
                             @method('PUT')
                             @csrf
                             <div class="form-group">
@@ -27,7 +27,7 @@
                                 </select>
                             </div>
                             <div class="form-group">
-                                <label for="">Prodi</label>
+                                <label for="">Ruangan</label>
                                 <input type="text" class="form-control @error('nama') is-invalid @enderror" name="nama" value="{{ $data->nama }}">
                                 @error('nama')
                                 <div class="invalid-feedback">
@@ -36,8 +36,17 @@
                                 @enderror
                             </div>
                             <div class="form-group">
+                                <label for="">Lantai</label>
+                                <input type="text" class="form-control @error('lantai') is-invalid @enderror" name="lantai" value="{{ $data->lantai }}">
+                                @error('lantai')
+                                <div class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
+                                @enderror
+                            </div>
+                            <div class="form-group">
                                 <button type="submit" class="btn btn-primary mr-2">Simpan</button>
-                                <a href="{{ url('admin/prodi') }}" class="btn btn-primary">Back</a>
+                                <a href="{{ url('admin/ruangan') }}" class="btn btn-primary">Back</a>
                             </div>
                         </form>
                     </div>

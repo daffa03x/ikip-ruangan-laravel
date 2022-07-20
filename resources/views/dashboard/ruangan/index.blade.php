@@ -18,7 +18,7 @@
                                 <hr>
                                 <div class="row">
                                     <div class="col-lg-6">
-                                        <a href="{{ url('admin/fakultas/create') }}" class="btn btn-primary mb-3 px-3">Tambah</a>
+                                        <a href="{{ url('admin/ruangan/create') }}" class="btn btn-primary mb-3 px-3">Tambah</a>
                                     </div>
                                     {{-- <div class="col-lg-6 d-flex justify-content-end">
                                         <a href="" class="btn btn-danger mb-3 px-3 mr-2">PDF</a>
@@ -44,9 +44,9 @@
                                                 <td>{{ $item->nama }}</td>
                                                 <td>{{ $item->lantai }}</td>
                                                 <td>
-                                                <form method="POST" class="d-inline" action="{{ url('admin/fakultas/'.$item->id) }}">
+                                                <form method="POST" class="d-inline" action="{{ url('admin/ruangan/'.$item->id) }}">
                                                 @csrf
-                                                <a class="btn btn-warning ml-1 text-light" href="{{ url('admin/fakultas/'.$item->id.'/edit') }}">Edit</a>
+                                                <a class="btn btn-warning ml-1 text-light" href="{{ url('admin/ruangan/'.$item->id.'/edit') }}">Edit</a>
                                                 <input name="_method" type="hidden" value="DELETE">
                                                 <button type="submit" class="btn btn-xs btn-danger show_confirm" data-toggle="tooltip" title='Delete'>Hapus</button>
                                                 </form>

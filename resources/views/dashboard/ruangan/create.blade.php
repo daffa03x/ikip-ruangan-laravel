@@ -10,15 +10,14 @@
             <div class="col-sm-12 col-md-8 col-lg-6">
                 <div class="card">
                     <div class="card-body">
-                        <h3 class="card-title">Tambah Prodi</h3>
-                        <form class="mt-4" method="POST" action="{{ url('admin/prodi/'.$data->id) }}">
-                            @method('PUT')
+                        <h3 class="card-title">Tambah Ruangan</h3>
+                        <form class="mt-4" method="POST" action="{{ url('admin/ruangan') }}">
                             @csrf
                             <div class="form-group">
                                 <label for="">Fakultas</label>
                                 <select class="form-control text-center" name="fakultas">
                                     @foreach($fakultas as $f)
-                                    @if(old('fakultas',$data->fakultas_id) == $f->id)
+                                    @if(old('fakultas') == $f->id)
                                     <option value="{{ $f->id }}" selected>{{ $f->nama }}</option>
                                     @else
                                     <option value="{{ $f->id }}">{{ $f->nama }}</option>
@@ -27,17 +26,16 @@
                                 </select>
                             </div>
                             <div class="form-group">
-                                <label for="">Prodi</label>
-                                <input type="text" class="form-control @error('nama') is-invalid @enderror" name="nama" value="{{ $data->nama }}">
-                                @error('nama')
-                                <div class="invalid-feedback">
-                                    {{ $message }}
-                                </div>
-                                @enderror
+                                <label for="">Nama Ruangan</label>
+                                <input type="text" name="nama" class="form-control" placeholder="Ruangan">
+                            </div>
+                            <div class="form-group">
+                                <label for="">Lantai</label>
+                                <input type="text" name="lantai" class="form-control" placeholder="Lantai">
                             </div>
                             <div class="form-group">
                                 <button type="submit" class="btn btn-primary mr-2">Simpan</button>
-                                <a href="{{ url('admin/prodi') }}" class="btn btn-primary">Back</a>
+                                <a href="{{ url('admin/ruangan') }}" class="btn btn-primary">Back</a>
                             </div>
                         </form>
                     </div>

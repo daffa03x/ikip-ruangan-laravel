@@ -9,8 +9,8 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <!-- Favicon icon -->
-    <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon.png">
-    <title>Adminmart Template - The Ultimate Multipurpose admin template</title>
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('images/logo.png') }}">
+    <title>Dashboard Admin</title>
     <!-- Custom CSS -->
     @stack('data-table-css')
     @include('dashboard.partials.style')
