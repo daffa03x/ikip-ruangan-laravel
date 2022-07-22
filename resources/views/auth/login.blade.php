@@ -58,7 +58,7 @@
                                 <div class="col-lg-12">
                                     <div class="form-group">
                                         <label class="text-dark" for="uname">Nomor Induk</label>
-                                        <input id="email" type="text" class="form-control @error('nim') is-invalid @enderror" name="nim" value="{{ old('nim') }}" required autocomplete="nim" autofocus placeholder="nim">
+                                        <input id="email" type="text" class="form-control @error('nim') is-invalid @enderror" name="nim" value="{{ old('nim') }}" required autocomplete="nim" autofocus placeholder="Nomor Induk">
                                         @error('nim')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
