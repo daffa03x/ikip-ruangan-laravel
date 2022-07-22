@@ -40,8 +40,10 @@
                                     class="hide-menu">Mata Kuliah</span></a></li>
                         <li class="sidebar-item"> <a class="sidebar-link sidebar-link" href="{{ url('admin/jadwal_kelas') }}"
                                 aria-expanded="false"><i data-feather="square" class="feather-icon"></i><span
-                                    class="hide-menu">Jadwal</span></a></li>
-
+                                    class="hide-menu">Jadwal Kelas</span></a></li>
+                        <li class="sidebar-item"> <a class="sidebar-link sidebar-link" href="{{ url('admin/jadwal_kelas') }}"
+                                aria-expanded="false"><i data-feather="square" class="feather-icon"></i><span
+                                    class="hide-menu">Jadwal Fasilitas</span></a></li>
                         <li class="list-divider"></li>
                         <li class="nav-small-cap"><span class="hide-menu">Data</span></li>
 
