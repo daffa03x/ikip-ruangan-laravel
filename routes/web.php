@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\FakultasController;
 use App\Http\Controllers\ProdiController;
 use App\Http\Controllers\RuanganController;
@@ -20,20 +21,16 @@ use App\Http\Controllers\RuanganController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+
+Route::get('/', [HomeController::class, 'index'])->name('home');
 
 Auth::routes();
-
-Route::get('/home', [HomeController::class, 'index'])->name('home');
 
 Route::get('/logout',[LoginController::class,'logout']);
 
 Route::group(['middleware' => ['role:Admin|Pegawai']],function () {
     Route::prefix('/admin')->group(function () {
-        Route::get('/dashboard',[HomeController::class,'dashboard'])->name('dashboard');
-        Route::get('/ruangan',[HomeController::class,'ruangan'])->name('ruangan');
+        Route::get('/dashboard',[DashboardController::class,'dashboard'])->name('dashboard');
         Route::resource('/angkatan',AngkatanController::class);
         Route::resource('/fakultas',FakultasController::class);
         Route::resource('/prodi',ProdiController::class);
